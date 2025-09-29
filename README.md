@@ -1,6 +1,7 @@
 # EXP 1 A : COMPUTATION OF DFT USING DIRECT AND FFT
 
 # AIM: 
+To compute the Discrete Fourier Transform (DFT) of a given sequence using the direct (formula-based) method, and the Fast Fourier Transform (FFT) function in Scilab.
 
 # To Obtain DFT and FFT of a given sequence in SCILAB. 
 
@@ -9,8 +10,48 @@ PC installed with SCILAB.
 
 # PROGRAM: 
 // DISCRETE FOURIER TRANSFORM 
+clc;
+clear;
+
+// --- Input Signal ---
+x = [2 1 0 -1 3 -2];     // <--- New sequence
+N = length(x);
+n = 0:N-1;
+
+// --- Direct DFT (Formula Method) ---
+X_dft = zeros(1, N);
+for k = 0:N-1
+    for m = 0:N-1
+        X_dft(k+1) = X_dft(k+1) + x(m+1) * exp(-%i*2*%pi*k*m/N);
+    end
+end
+
+// --- FFT (Built-in Function) ---
+X_fft = fft(x, -1);
+
+// --- Plots ---
+subplot(3,1,1);
+plot2d3(n, x);   // discrete stem-like graph
+title("Input Signal x[n]");
+xlabel("n"); ylabel("x[n]");
+
+subplot(3,1,2);
+plot2d3(n, abs(X_dft));   // DFT magnitude
+title("DFT Magnitude (Direct Method)");
+xlabel("k"); ylabel("|X[k]|");
+
+subplot(3,1,3);
+plot2d3(n, abs(X_fft));   // FFT magnitude
+title("FFT Magnitude (Built-in)");
+xlabel("k"); ylabel("|X[k]|");
+
+
+
 
 # OUTPUT: 
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/abad772d-6f8a-4d95-9458-50d2c650ba10" />
+
 
 
 # RESULT: 
+The DFT of the given sequence was successfully computed using both the direct formula and the FFT function in Scilab, and the results were verified to be identical.
