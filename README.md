@@ -10,6 +10,7 @@ PC installed with SCILAB.
 
 # PROGRAM: 
 // DISCRETE FOURIER TRANSFORM 
+```
 clc;
 clear;
 
@@ -44,6 +45,7 @@ subplot(3,1,3);
 plot2d3(n, abs(X_fft));   // FFT magnitude
 title("FFT Magnitude (Built-in)");
 xlabel("k"); ylabel("|X[k]|");
+```
 
 
 
